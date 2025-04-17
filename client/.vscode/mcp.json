@@ -1,0 +1,25 @@
+{
+	"servers": {
+		"fetch": {
+			"type": "stdio",
+			"command": "uvx",
+			"args": [
+				"mcp-server-fetch"
+			]
+		},
+		"tavily-mcp": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"tavily-mcp@0.1.4"
+			],
+			"env": {
+				"TAVILY_API_KEY": "tvly-dev-somethig",
+			}
+		},
+		"my-mcp-server-19b69c3b": {
+			"type": "sse",
+			"url": "http://localhost:8000/sse"
+		},
+	}
+}

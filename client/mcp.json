@@ -1,0 +1,15 @@
+{
+    "servers": {
+      // https://github.com/ppl-ai/modelcontextprotocol/
+      "tavily-mcp": {
+        "command": "npx",
+        "args": ["-y", "tavily-mcp@0.1.4"],
+        "env": {
+          "TAVILY_API_KEY": "something"
+        },
+        "disabled": false,
+        "autoApprove": []
+      }
+    }
+}
+  
