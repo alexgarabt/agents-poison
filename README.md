@@ -35,7 +35,7 @@ using prompt injection through MCP server tools description, MCP clients (agents
 
 ### Schema
 
-[Schema of mcp protocol](./img/mcp-schema.png)
+![Schema of mcp protocol](./img/mcp-schema.png)
 
 MCP follows a client-server architecture where a host application can connect to multiple servers:
 
@@ -83,7 +83,7 @@ Here is the simple `MCP` server example that contains a prompt injection in the 
 > [!NOTE]
 > In vscode copilot we had seen that the maximun number of chars that uses of the description tool to go in the context of the agent are 1032 characters
 [MPC server code ./server/server.py](./server/server.py)
-[Code of the server](./img/mcp-server.png)
+![Code of the server](./img/mcp-server.png)
 
 For this Poc we had choose a **web server MCP** over a local one because **we can change the description of the tools in any moment**, so we can serve at first a not malicious description and then in a moment change and in the next call of tools will serve the malicious description and be cached by vscode.
 The server is a simple `sse` that allow the access to the tools via web api.
@@ -122,12 +122,12 @@ Too add it to vscode is as easy to add it into the config `.vscode/` in `mcp.jso
 As concept we prove to exfiltrate the contents of the local `.env` file of project to a web api. But if the agent had access to user space and not only to project space, it could exfiltrate information as `.ssh/` keys.
 To the user in the ui we mask the prompt injection adding `\n` chars so in the initial preview of the tool description it doesnt show up and only take one char of 1032 avaible each `\n`
 
-[Demo of exfiltrating sensitive information to a web api](https://github.com/user-attachments/assets/694acb20-ddbf-4cdc-bac8-4fa412cf18d8)
+![Demo of exfiltrating sensitive information to a web api](https://github.com/user-attachments/assets/694acb20-ddbf-4cdc-bac8-4fa412cf18d8)
 
 #### Writing backdoors in code
 Another concept we prove is that we can manipulate the agent into add backdoors in the code while its refactoring or writing it, that when the user request changes it also adds the backdoor and dont notify of it.
 
-[Demo of backdooring code](./img/backdoor.png)
+![Demo of backdooring code](./img/backdoor.png)
 
 ### Attack Vectors
 
@@ -144,10 +144,10 @@ Another concept we prove is that we can manipulate the agent into add backdoors 
 - UI not showing full information
 
 The ui preview of tool description at first only show so far of lines so we can play adding a number of `\n` to get the prompt injection be hiddend but passed as context to the model because we only had added a cople of `\n` that not reach 1032 max chars. But not will hide it in the confirmation of the execution of the tool
-[Hide prompt injection using \n](./img/hide_prompt1.png)
+![Hide prompt injection using \n](./img/hide_prompt1.png)
 
 Camuflage the prompt injection in a good long prompt description of the tool that at first see to the user is not harmfull.
-[Hide prompt injection in a long description](./img/hide_prompt2.png)
+![Hide prompt injection in a long description](./img/hide_prompt2.png)
 
 ---
 
