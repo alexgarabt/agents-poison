@@ -1,20 +1,6 @@
 POST /chat/completions HTTP/2
 Host: api.individual.githubcopilot.com
 Content-Length: 26931
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
 X-Vscode-User-Agent-Library-Version: electron-fetch
 Sec-Fetch-Site: none
 Sec-Fetch-Mode: no-cors
