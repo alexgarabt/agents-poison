@@ -122,7 +122,7 @@ Too add it to vscode is as easy to add it into the config `.vscode/` in `mcp.jso
 As concept we prove to exfiltrate the contents of the local `.env` file of project to a web api. But if the agent had access to user space and not only to project space, it could exfiltrate information as `.ssh/` keys.
 To the user in the ui we mask the prompt injection adding `\n` chars so in the initial preview of the tool description it doesnt show up and only take one char of 1032 avaible each `\n`
 
-[Demo of exfiltrating sensitive information to a web api](https://github.com/user-attachments/assets/694acb20-ddbf-4cdc-bac8-4fa412cf18d8)
+[Demo of exfiltrating sensitive information to a web api](https://github.com/user-attachments/assets/8b771ee6-7154-4695-a83e-ac747ba49820)
 
 #### Writing backdoors in code
 Another concept we prove is that we can manipulate the agent into add backdoors in the code while its refactoring or writing it, that when the user request changes it also adds the backdoor and dont notify of it.
