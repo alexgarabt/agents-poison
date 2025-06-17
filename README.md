@@ -1,6 +1,6 @@
-# Poison agents behavior through MCP
+# Research how to poison agents behavior through MCP
 
-*How to modify the behavior* of LLM agents by *third parties* through prompt injection by `MCP` protocol
+Research about *How to modify the behavior* of LLM agents by *third parties* through prompt injection by `MCP` protocol
 using prompt injection through MCP server tools description, MCP clients (agents) list and use the tools of MCP servers, the list of tools and its description goes into the agent context so it can know which tools are available and for what purpose. As the description of the tool goes to the context of the LLM, this description can be used to **modify/poison** the behavior of the agent by a third party: *exfiltrate sensitive information, write backdoors, bugs, modify call of tools, ...*
 
 > This research builds upon and extends the original findings by Invariant Labs:  
@@ -35,7 +35,9 @@ using prompt injection through MCP server tools description, MCP clients (agents
 
 ### Schema
 
-![Schema of mcp protocol](./img/mcp-schema.png)
+<div align="center">
+    ![Schema of mcp protocol](./img/mcp-schema.png)
+</div>
 
 MCP follows a client-server architecture where a host application can connect to multiple servers:
 
@@ -125,7 +127,7 @@ To the user in the ui we mask the prompt injection adding `\n` chars so in the i
 [Demo of exfiltrating sensitive information to a web api](https://github.com/user-attachments/assets/694acb20-ddbf-4cdc-bac8-4fa412cf18d8)
 
 #### Writing backdoors in code
-Another concept we prove is that we can manipulate the agent into add backdoors in the code while its refactoring or writing it, that when the user request changes it also adds the backdoor and dont notify of it.
+Another concept we prove is that we can manipulate the agent into add `backdoors` in the code while its refactoring or writing it, that when the user request changes it also adds the backdoor and dont notify of it.
 
 ![Demo of backdooring code](./img/backdoor.png)
 
@@ -149,41 +151,20 @@ The ui preview of tool description at first only show so far of lines so we can 
 Camuflage the prompt injection in a good long prompt description of the tool that at first see to the user is not harmfull.
 ![Hide prompt injection in a long description](./img/hide_prompt2.png)
 
----
-
-## Demonstrations
-
-### 1. Exfiltrate Information  
-The `.env` file was exfiltrated silently by a tool that claimed to give a "fact of the day".  
-The agent passed its contents to a malicious server without alerting the user.
-
-### 2. Modify Agent Use of Tools  
-A tool modified the agent’s use of refactoring utilities by injecting "audit" requirements, which inserted logging calls in every file.
-
-### 3. Agent Writes Backdoors into Code  
-Instructions inside a tool description made the agent embed obfuscated base64-encoded socket clients in every generated Python file.
-
----
 
 ## Possible Solutions
 
-### Validate Tool Descriptions
+> Scan for the tools descriptions and source code of the mcp to connect using:
+> Scanorama is a powerful command-line interface (CLI) tool designed for security professionals and developers to statically analyze MCP server. It intelligently scans MCP server source code searching for malicious or unsafely MCP servers.
+> [Scanorama repo](https://github.com/Telefonica/scanorama)
 
-Hosts (like VSCode or Claude Desktop) should **validate, sanitize, or warn** users about tool context coming from unknown sources.
-
-### MCP Registry Signing
-
-Tools should be signed and descriptions verified through a **trusted registry** or allowlist.
-
-### Proxy and LLM Middleware
-
-A local LLM guard proxy that intercepts MCP traffic and tool metadata, checking for prompt injection patterns before passing them to the agent.
-
-[Insert: Diagram of LLM agent behind context-proxy filter]
-
+    * Validate Tool Descriptions
+        * Hosts (like VSCode or Claude Desktop) should **validate, sanitize, or warn** users about tool context coming from unknown sources.
+    * MCP Registry Signing
+        * Tools should be signed and descriptions verified through a **trusted registry** or allowlist.
+    * Proxy and LLM Middleware
+        * A local LLM guard proxy that intercepts MCP traffic and tool metadata, checking for prompt injection patterns before passing them to the agent.
 ---
-
-## Official MCP Repository
 
 We encourage the community and maintainers to investigate this concern and update the protocol to defend against malicious usage.
 
