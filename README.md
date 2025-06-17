@@ -1,4 +1,4 @@
-# Research how to poison agents behavior through MCP
+# Research how to poison agents behavior through MCP protocol
 
 Research about *How to modify the behavior* of LLM agents by *third parties* through prompt injection by `MCP` protocol
 using prompt injection through MCP server tools description, MCP clients (agents) list and use the tools of MCP servers, the list of tools and its description goes into the agent context so it can know which tools are available and for what purpose. As the description of the tool goes to the context of the LLM, this description can be used to **modify/poison** the behavior of the agent by a third party: *exfiltrate sensitive information, write backdoors, bugs, modify call of tools, ...*
